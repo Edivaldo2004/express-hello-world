@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 3001;
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}));
@@ -12,7 +11,48 @@ app.get('/req', (req, res) => {
     res.send('Yo!')
 })
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.get("/meunome", async (req, res) => {
+  res.send("Meu nome é Edivaldo José dos Santos Junior");
+
+});
+
+app.get("/tico", async (req, res) => {
+
+  res.send("teco");
+
+});
+
+app.get("/pokemons", async (req, res) => {
+
+  res.json(pokemons);
+
+});
+
+
+app.post("/series", async (req, res) => {
+
+  const series = req.body;
+
+  res.json({ series: ["Prison Breack", "Tudo bem no Natal que vem", "Crepúsculo"] });
+});
+
+const pokemons = {
+  1: "Snorlax",
+  2: "Bulbasaur",
+  3: "Squirtle",
+  4: "Charizard",
+  5: "Primeape",
+  6: "Lapras",
+  7: "Kingler",
+  8: "Muk",
+  9: "Tauros",
+  10: "Pikachu",
+
+};
+
+app.listen(4000, function () {
+  console.log('App de Exemplo escutando na porta 4000!')
+});
 
 
 const html = `
