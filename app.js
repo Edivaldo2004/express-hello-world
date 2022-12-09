@@ -85,7 +85,7 @@ const html = `
         font-size: calc(62rem / 16);
       }
       body {
-        background: white;
+        background-color: #282834;;
       }
       section {
         border-radius: 1em;
@@ -95,12 +95,103 @@ const html = `
         left: 50%;
         margin-right: -50%;
         transform: translate(-50%, -50%);
+        color: white
       }
+      @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+
+@keyframes topAnimation {
+    from {
+        transform: translate(0rem, 0);
+    }
+
+    to {
+        transform: translate(0rem, 3.5rem);
+    }
+}
+
+@keyframes bottomAnimation {
+    from {
+        transform: translate(-11.5rem, 0);
+    }
+
+    to {
+        transform: translate(0rem, 0);
+    }
+}
+
+button.bti {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 700;
+    border: 0;
+    position: relative;
+    letter-spacing: 0.15em;
+    margin: 0 auto;
+    padding: 1rem 2.5rem;
+    background: transparent;
+    outline: none;
+    font-size: 50px;
+    color: #fafafa;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.15s;
+}
+
+button.bti::after,
+button.bti::before {
+    border: 0;
+    content: "";
+    position: absolute;
+    height: 40%;
+    width: 10%;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: -2;
+    border-radius: 50%;
+}
+
+button.bti::before {
+    border: 0;
+    background-color: #9CD9D9;
+    top: -0.75rem;
+    left: 0.5rem;
+    animation: topAnimation 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.25s infinite alternate;
+}
+
+button.bti::after {
+    background-color: #2595a1;
+    top: 3rem;
+    left: 13rem;
+    animation: bottomAnimation 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.5s infinite alternate;
+}
+
+button.bti:hover {
+    color: rgb(15, 14, 14);
+}
+
+button.bti:hover::before,
+button.btn:hover::after {
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 12px;
+    animation: none;
+}
+
+button.bti:hover::after {
+    left: 0rem;
+}
+
+button.bti:hover::before {
+    top: 0.5rem;
+    left: 0.35rem;
+}
+.top-keyframes {
+    margin-top: -20px;
+}
     </style>
   </head>
   <body>
     <section>
-      Hello Express API 
+      <button class="bti">API do Edivaldo</button>
+      <h3>Atividade Hello Expresss</h3>
     </section>
   </body>
 </html>
